@@ -1,29 +1,29 @@
-import { useState, useCallback } from 'react'
-import { Link } from 'react-router-dom'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { useState, useCallback } from "react";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import {
   computeAllResults,
   formatCurrency,
   formatPercent,
   type MortgageInputs,
-} from '../utils/calculator'
+} from "../utils/calculator";
 
-const CURRENCIES = ['EUR', 'GBP', 'USD']
+const CURRENCIES = ["EUR", "GBP", "USD"];
 const DEFAULT_INPUTS: MortgageInputs = {
   propertyPrice: 500000,
   deposit: 175000,
   interestRate: 3.5,
   termYears: 25,
   fees: 0,
-  currency: 'EUR',
-}
+  currency: "EUR",
+};
 
 interface FieldError {
-  propertyPrice?: string
-  deposit?: string
-  interestRate?: string
-  termYears?: string
+  propertyPrice?: string;
+  deposit?: string;
+  interestRate?: string;
+  termYears?: string;
 }
 
 function NumberInput({
@@ -38,16 +38,16 @@ function NumberInput({
   suffix,
   error,
 }: {
-  id: string
-  label: string
-  value: number | ''
-  onChange: (v: number | '') => void
-  min?: number
-  max?: number
-  step?: number
-  prefix?: string
-  suffix?: string
-  error?: string
+  id: string;
+  label: string;
+  value: number | "";
+  onChange: (v: number | "") => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  prefix?: string;
+  suffix?: string;
+  error?: string;
 }) {
   return (
     <div>
@@ -68,12 +68,12 @@ function NumberInput({
           max={max}
           step={step ?? 1}
           onChange={(e) => {
-            const v = e.target.value
-            onChange(v === '' ? '' : Number(v))
+            const v = e.target.value;
+            onChange(v === "" ? "" : Number(v));
           }}
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-error` : undefined}
-          className={`input-field ${prefix ? 'rounded-l-none' : ''} ${suffix ? 'rounded-r-none' : ''} ${error ? 'border-red-400 focus:ring-red-400' : ''}`}
+          className={`input-field ${prefix ? "rounded-l-none" : ""} ${suffix ? "rounded-r-none" : ""} ${error ? "border-red-400 focus:ring-red-400" : ""}`}
         />
         {suffix && (
           <span className="inline-flex items-center px-3 border border-l-0 border-gray-300 bg-gray-50 rounded-r text-sm text-gray-500">
@@ -87,88 +87,92 @@ function NumberInput({
         </p>
       )}
     </div>
-  )
+  );
 }
 
 export default function CalculatorPage() {
-  const [inputs, setInputs] = useState<MortgageInputs>(DEFAULT_INPUTS)
-  const [rawValues, setRawValues] = useState<Record<string, number | ''>>({
+  const [inputs, setInputs] = useState<MortgageInputs>(DEFAULT_INPUTS);
+  const [rawValues, setRawValues] = useState<Record<string, number | "">>({
     propertyPrice: DEFAULT_INPUTS.propertyPrice,
     deposit: DEFAULT_INPUTS.deposit,
     interestRate: DEFAULT_INPUTS.interestRate,
     termYears: DEFAULT_INPUTS.termYears,
     fees: DEFAULT_INPUTS.fees,
-  })
-  const [errors, setErrors] = useState<FieldError>({})
-  const [calculated, setCalculated] = useState(false)
-  const [results, setResults] = useState(computeAllResults(DEFAULT_INPUTS))
+  });
+  const [errors, setErrors] = useState<FieldError>({});
+  const [calculated, setCalculated] = useState(false);
+  const [results, setResults] = useState(computeAllResults(DEFAULT_INPUTS));
 
   const updateField = useCallback(
-    (field: keyof MortgageInputs, value: number | '') => {
-      setRawValues((prev) => ({ ...prev, [field]: value }))
-      if (value !== '') {
-        setInputs((prev) => ({ ...prev, [field]: value as number }))
+    (field: keyof MortgageInputs, value: number | "") => {
+      setRawValues((prev) => ({ ...prev, [field]: value }));
+      if (value !== "") {
+        setInputs((prev) => ({ ...prev, [field]: value as number }));
       }
     },
-    []
-  )
+    [],
+  );
 
   const validate = (): boolean => {
-    const errs: FieldError = {}
+    const errs: FieldError = {};
     if (!rawValues.propertyPrice || (rawValues.propertyPrice as number) <= 0)
-      errs.propertyPrice = 'Enter a valid property price'
-    if (rawValues.deposit === '' || (rawValues.deposit as number) < 0)
-      errs.deposit = 'Enter a valid deposit amount'
-    if (
-      (rawValues.deposit as number) >= (rawValues.propertyPrice as number)
-    )
-      errs.deposit = 'Deposit must be less than the property price'
+      errs.propertyPrice = "Enter a valid property price";
+    if (rawValues.deposit === "" || (rawValues.deposit as number) < 0)
+      errs.deposit = "Enter a valid deposit amount";
+    if ((rawValues.deposit as number) >= (rawValues.propertyPrice as number))
+      errs.deposit = "Deposit must be less than the property price";
     if (!rawValues.interestRate || (rawValues.interestRate as number) <= 0)
-      errs.interestRate = 'Enter a valid interest rate'
+      errs.interestRate = "Enter a valid interest rate";
     if (
       !rawValues.termYears ||
       (rawValues.termYears as number) < 1 ||
       (rawValues.termYears as number) > 40
     )
-      errs.termYears = 'Term must be between 1 and 40 years'
-    setErrors(errs)
-    return Object.keys(errs).length === 0
-  }
+      errs.termYears = "Term must be between 1 and 40 years";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
 
   const handleCalculate = () => {
-    if (!validate()) return
-    setResults(computeAllResults(inputs))
-    setCalculated(true)
-  }
+    if (!validate()) return;
+    setResults(computeAllResults(inputs));
+    setCalculated(true);
+  };
 
   const handleReset = () => {
-    setInputs(DEFAULT_INPUTS)
+    setInputs(DEFAULT_INPUTS);
     setRawValues({
       propertyPrice: DEFAULT_INPUTS.propertyPrice,
       deposit: DEFAULT_INPUTS.deposit,
       interestRate: DEFAULT_INPUTS.interestRate,
       termYears: DEFAULT_INPUTS.termYears,
       fees: DEFAULT_INPUTS.fees,
-    })
-    setErrors({})
-    setCalculated(false)
-    setResults(computeAllResults(DEFAULT_INPUTS))
-  }
+    });
+    setErrors({});
+    setCalculated(false);
+    setResults(computeAllResults(DEFAULT_INPUTS));
+  };
 
-  const fmt = (v: number) => formatCurrency(v, inputs.currency)
-  const ltv = results.ltv
+  const fmt = (v: number) => formatCurrency(v, inputs.currency);
+  const ltv = results.ltv;
 
   return (
     <>
       <title>Mortgage Calculator - Tenerife Mortgage</title>
-      <meta name="description" content="Use our Spanish mortgage calculator to estimate your monthly repayments, LTV, and total cost of borrowing." />
+      <meta
+        name="description"
+        content="Use our Spanish mortgage calculator to estimate your monthly repayments, LTV, and total cost of borrowing."
+      />
       <Header />
 
       {/* Page hero */}
       <div className="relative bg-brand-blue py-16 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1400&q=80')" }}
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1400&q=80')",
+          }}
           aria-hidden="true"
         />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
@@ -191,15 +195,21 @@ export default function CalculatorPage() {
               <div className="space-y-5">
                 {/* Currency */}
                 <div>
-                  <label htmlFor="currency" className="label-text">Currency</label>
+                  <label htmlFor="currency" className="label-text">
+                    Currency
+                  </label>
                   <select
                     id="currency"
                     value={inputs.currency}
-                    onChange={(e) => setInputs((p) => ({ ...p, currency: e.target.value }))}
+                    onChange={(e) =>
+                      setInputs((p) => ({ ...p, currency: e.target.value }))
+                    }
                     className="input-field"
                   >
                     {CURRENCIES.map((c) => (
-                      <option key={c} value={c}>{c}</option>
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -208,10 +218,16 @@ export default function CalculatorPage() {
                   id="propertyPrice"
                   label="Property Price"
                   value={rawValues.propertyPrice}
-                  onChange={(v) => updateField('propertyPrice', v)}
+                  onChange={(v) => updateField("propertyPrice", v)}
                   min={1}
                   step={1000}
-                  prefix={inputs.currency === 'EUR' ? '€' : inputs.currency === 'GBP' ? '£' : '$'}
+                  prefix={
+                    inputs.currency === "EUR"
+                      ? "€"
+                      : inputs.currency === "GBP"
+                        ? "£"
+                        : "$"
+                  }
                   error={errors.propertyPrice}
                 />
 
@@ -219,10 +235,16 @@ export default function CalculatorPage() {
                   id="deposit"
                   label="Deposit / Equity"
                   value={rawValues.deposit}
-                  onChange={(v) => updateField('deposit', v)}
+                  onChange={(v) => updateField("deposit", v)}
                   min={0}
                   step={1000}
-                  prefix={inputs.currency === 'EUR' ? '€' : inputs.currency === 'GBP' ? '£' : '$'}
+                  prefix={
+                    inputs.currency === "EUR"
+                      ? "€"
+                      : inputs.currency === "GBP"
+                        ? "£"
+                        : "$"
+                  }
                   error={errors.deposit}
                 />
 
@@ -230,7 +252,7 @@ export default function CalculatorPage() {
                   id="interestRate"
                   label="Interest Rate"
                   value={rawValues.interestRate}
-                  onChange={(v) => updateField('interestRate', v)}
+                  onChange={(v) => updateField("interestRate", v)}
                   min={0.01}
                   max={30}
                   step={0.1}
@@ -242,7 +264,7 @@ export default function CalculatorPage() {
                   id="termYears"
                   label="Mortgage Term"
                   value={rawValues.termYears}
-                  onChange={(v) => updateField('termYears', v)}
+                  onChange={(v) => updateField("termYears", v)}
                   min={1}
                   max={40}
                   suffix="years"
@@ -253,10 +275,16 @@ export default function CalculatorPage() {
                   id="fees"
                   label="Additional Fees (optional)"
                   value={rawValues.fees}
-                  onChange={(v) => updateField('fees', v)}
+                  onChange={(v) => updateField("fees", v)}
                   min={0}
                   step={100}
-                  prefix={inputs.currency === 'EUR' ? '€' : inputs.currency === 'GBP' ? '£' : '$'}
+                  prefix={
+                    inputs.currency === "EUR"
+                      ? "€"
+                      : inputs.currency === "GBP"
+                        ? "£"
+                        : "$"
+                  }
                 />
               </div>
 
@@ -295,15 +323,24 @@ export default function CalculatorPage() {
                     highlight
                   />
                   <div className="border-t border-white/20 pt-4 space-y-3">
-                    <ResultRow label="Property Price" value={fmt(inputs.propertyPrice)} />
+                    <ResultRow
+                      label="Property Price"
+                      value={fmt(inputs.propertyPrice)}
+                    />
                     <ResultRow label="Deposit" value={fmt(inputs.deposit)} />
                     <ResultRow
                       label="LTV (Loan-to-Value)"
                       value={formatPercent(ltv)}
-                      status={ltv > 80 ? 'warn' : ltv > 70 ? 'neutral' : 'good'}
+                      status={ltv > 80 ? "warn" : ltv > 70 ? "neutral" : "good"}
                     />
-                    <ResultRow label="Interest Rate" value={formatPercent(inputs.interestRate)} />
-                    <ResultRow label="Term" value={`${inputs.termYears} years`} />
+                    <ResultRow
+                      label="Interest Rate"
+                      value={formatPercent(inputs.interestRate)}
+                    />
+                    <ResultRow
+                      label="Term"
+                      value={`${inputs.termYears} years`}
+                    />
                     {inputs.fees > 0 && (
                       <ResultRow label="Fees" value={fmt(inputs.fees)} />
                     )}
@@ -325,11 +362,17 @@ export default function CalculatorPage() {
 
               {/* LTV indicator */}
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                <h4 className="text-sm font-semibold text-brand-blue mb-3">LTV Indicator</h4>
+                <h4 className="text-sm font-semibold text-brand-blue mb-3">
+                  LTV Indicator
+                </h4>
                 <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
                   <div
                     className={`h-3 rounded-full transition-all duration-500 ${
-                      ltv > 80 ? 'bg-red-400' : ltv > 70 ? 'bg-yellow-400' : 'bg-green-400'
+                      ltv > 80
+                        ? "bg-red-400"
+                        : ltv > 70
+                          ? "bg-yellow-400"
+                          : "bg-green-400"
                     }`}
                     style={{ width: `${Math.min(ltv, 100)}%` }}
                     role="progressbar"
@@ -340,23 +383,26 @@ export default function CalculatorPage() {
                 </div>
                 <p className="text-xs text-gray-500">
                   {ltv <= 60
-                    ? 'Excellent — typically qualifies for the best rates.'
+                    ? "Excellent — typically qualifies for the best rates."
                     : ltv <= 70
-                    ? 'Good — competitive rates available.'
-                    : ltv <= 80
-                    ? 'Acceptable — standard rates apply.'
-                    : 'High LTV — lender approval may be harder to obtain.'}
+                      ? "Good — competitive rates available."
+                      : ltv <= 80
+                        ? "Acceptable — standard rates apply."
+                        : "High LTV — lender approval may be harder to obtain."}
                 </p>
               </div>
 
               {/* CTA */}
               <div className="bg-brand-gold/10 border border-brand-gold/30 rounded-2xl p-5">
-                <h4 className="font-semibold text-brand-blue mb-2">Start Your Application</h4>
+                <h4 className="font-semibold text-brand-blue mb-2">
+                  Start Your Application
+                </h4>
                 <p className="text-sm text-gray-600 mb-4">
-                  Ready to take the next step? Complete our 24 Hour Mortgage Pre-Approval form.
+                  Ready to take the next step? Complete our 24 Hour Mortgage
+                  Pre-Approval form.
                 </p>
                 <Link
-                  to="/pre-approval"
+                  to="/Contact"
                   className="block text-center bg-brand-gold hover:bg-brand-lightgold text-brand-cream hover:text-brand-blue font-semibold py-2 px-4 rounded transition-colors text-sm"
                 >
                   24 Hour Pre-Approval →
@@ -367,17 +413,18 @@ export default function CalculatorPage() {
 
           {/* Disclaimer */}
           <p className="text-xs text-gray-400 text-center mt-10 max-w-2xl mx-auto leading-relaxed">
-            This calculator provides an estimate only. Results are based on standard
-            amortization formulas and are for illustrative purposes. Actual mortgage
-            terms will depend on your individual circumstances and lender criteria.
-            Please speak with one of our consultants for personalised advice.
+            This calculator provides an estimate only. Results are based on
+            standard amortization formulas and are for illustrative purposes.
+            Actual mortgage terms will depend on your individual circumstances
+            and lender criteria. Please speak with one of our consultants for
+            personalised advice.
           </p>
         </div>
       </main>
 
       <Footer />
     </>
-  )
+  );
 }
 
 function ResultRow({
@@ -386,27 +433,31 @@ function ResultRow({
   highlight = false,
   status,
 }: {
-  label: string
-  value: string
-  highlight?: boolean
-  status?: 'good' | 'neutral' | 'warn'
+  label: string;
+  value: string;
+  highlight?: boolean;
+  status?: "good" | "neutral" | "warn";
 }) {
   return (
     <div className="flex justify-between items-center">
-      <span className={`text-sm ${highlight ? 'text-gray-300' : 'text-gray-400'}`}>{label}</span>
+      <span
+        className={`text-sm ${highlight ? "text-gray-300" : "text-gray-400"}`}
+      >
+        {label}
+      </span>
       <span
         className={`font-semibold text-sm ${
           highlight
-            ? 'text-white text-base'
-            : status === 'warn'
-            ? 'text-red-300'
-            : status === 'good'
-            ? 'text-green-300'
-            : 'text-white'
+            ? "text-white text-base"
+            : status === "warn"
+              ? "text-red-300"
+              : status === "good"
+                ? "text-green-300"
+                : "text-white"
         }`}
       >
         {value}
       </span>
     </div>
-  )
+  );
 }
