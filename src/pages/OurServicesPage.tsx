@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import teamImage from "../assets/img/team/ART_7237.jpg";
 
 const CORE_SERVICES = [
   {
@@ -150,7 +151,7 @@ export default function OurServicesPage() {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg aspect-video bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?w=1400&q=80"
+                src={teamImage}
                 alt="Tenerife property — coastline and development"
                 className="w-full h-full object-cover"
               />

@@ -11,6 +11,7 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroCarousel from "../components/HeroCarousel";
+import teamImage from "../assets/img/team/ART_7260.jpg";
 
 export default function HomePage() {
   return (
@@ -117,9 +118,9 @@ export default function HomePage() {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg aspect-video bg-gray-100">
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+                src={teamImage}
                 alt="Mortgage consultation in progress"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>
@@ -365,18 +366,18 @@ export default function HomePage() {
               {[
                 {
                   quote:
-                    "The process was explained clearly from the start and we always knew what documents were needed next.",
-                  attr: "International buyer",
+                    "Everything was explained clearly, and I always knew which documents I needed to send next. It made the whole process much less stressful.",
+                  attr: "Sarah M.",
                 },
                 {
                   quote:
-                    "Professional, organised and reassuring throughout our Spanish mortgage application.",
-                  attr: "Property purchaser",
+                    "The team was responsive, professional, and kept us updated throughout our Spanish mortgage application. We'd happily use them again.",
+                  attr: "James T.",
                 },
                 {
                   quote:
-                    "A practical service for buyers who want independent guidance and local knowledge.",
-                  attr: "Tenerife client",
+                    "Having someone with local knowledge made a real difference. They answered our questions quickly and helped us avoid a few common pitfalls.",
+                  attr: "Laura H.",
                 },
               ].map(({ quote, attr }) => (
                 <div

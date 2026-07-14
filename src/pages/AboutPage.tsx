@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import matImage from "../assets/img/team/ART_7231.jpg";
+import marImage from "../assets/img/team/ART_7201.jpg";
+import louImage from "../assets/img/team/ART_7183.jpg";
 
 const TEAM = [
   {
@@ -8,8 +11,7 @@ const TEAM = [
     name: "Matthew",
     role: "Senior Mortgage Consultant",
     tag: "Client Assessment & Mortgage Strategy",
-    photo:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
+    photo: matImage,
     quote:
       "I sit down with every client before a single form is filled. My job is to understand where you are, where you want to be, and what the lenders will need to see. I have spent years building relationships with Spanish banks and I use that knowledge to position your application as strongly as possible from the very first conversation.",
     credentials: [
@@ -23,8 +25,7 @@ const TEAM = [
     name: "Louise",
     role: "Client Relations & Operations",
     tag: "Documentation, Lender Liaison & Client Care",
-    photo:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    photo: louImage,
     quote:
       "I am your point of contact from the moment your application goes in until the keys are in your hand. I track every document, chase every response and make sure nothing falls through the gaps. Buying abroad means navigating systems you have never encountered before — I am here to make that feel straightforward, not stressful.",
     credentials: [
@@ -38,8 +39,7 @@ const TEAM = [
     name: "Marco — Magna Financial",
     role: "Foreign Exchange Partner",
     tag: "International Payments & Currency Management",
-    photo:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    photo: marImage,
     quote:
       "I manage our relationships with Spanish banks and specialist finance partners so that you are never limited to a single lender's terms. I negotiate on your behalf using real market knowledge — not just published rates. My goal is to secure the most competitive structure available for your specific situation, whether that is a standard residential mortgage, a non-resident product or a more bespoke finance arrangement.",
     credentials: [
