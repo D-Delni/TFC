@@ -56,6 +56,9 @@ export default function Header() {
             <NavLink to="/mortgage-calculator" className={linkClass}>
               Calculator
             </NavLink>
+            <NavLink to="/faq" className={linkClass}>
+              FAQ
+            </NavLink>
             <Link to="/contact" className="btn-primary text-sm py-2 px-4">
               Free Consultation
             </Link>
