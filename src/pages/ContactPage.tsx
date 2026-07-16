@@ -93,10 +93,10 @@ export default function ContactPage() {
                     />
                   </svg>
                   <a
-                    href="mailto:admin@tenerifemortgageconsultancy.com"
+                    href="mailto:admin@tenerifemortgage.com"
                     className="text-brand-blue hover:text-brand-gold font-medium"
                   >
-                    admin@tenerifemortgageconsultancy.com
+                    admin@tenerifemortgage.com
                   </a>
                 </div>
                 <div className="flex gap-3 items-center">
@@ -114,10 +114,10 @@ export default function ContactPage() {
                     />
                   </svg>
                   <a
-                    href="mailto:matthew@tenerifemortgageconsultancy.com"
+                    href="mailto:matthew@tenerifemortgage.com"
                     className="text-brand-blue hover:text-brand-gold font-medium"
                   >
-                    matthew@tenerifemortgageconsultancy.com
+                    matthew@tenerifemortgage.com
                   </a>
                 </div>
                 <div className="flex gap-3 items-center">
@@ -141,7 +141,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="mailto:admin@tenerifemortgageconsultancy.com"
+                href="mailto:admin@tenerifemortgage.com"
                 className="btn-primary inline-block mt-8"
               >
                 Email us

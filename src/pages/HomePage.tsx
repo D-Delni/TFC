@@ -412,10 +412,10 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <a
-                href="mailto:admin@tenerifemortgageconsultancy.com"
+                href="mailto:admin@tenerifemortgage.com"
                 className="text-brand-gold hover:text-brand-lightgold font-semibold text-sm"
               >
-                admin@tenerifemortgageconsultancy.com
+                admin@tenerifemortgage.com
               </a>
               <Link to="/contact" className="btn-primary ml-0 sm:ml-4">
                 Contact Us

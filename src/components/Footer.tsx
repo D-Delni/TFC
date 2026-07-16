@@ -20,17 +20,17 @@ export default function Footer() {
             Adeje 38660, S/C de Tenerife
           </p>
           <a
-            href="mailto:admin@tenerifemortgageconsultancy.com"
+            href="mailto:admin@tenerifemortgage.com"
             className="inline-block mt-3 text-sm text-brand-gold hover:text-brand-lightgold"
           >
-            admin@tenerifemortgageconsultancy.com
+            admin@tenerifemortgage.com
           </a>
           <br />
           <a
-            href="mailto:matthew@tenerifemortgageconsultancy.com"
+            href="mailto:matthew@tenerifemortgage.com"
             className="inline-block mt-3 text-sm text-brand-gold hover:text-brand-lightgold"
           >
-            matthew@tenerifemortgageconsultancy.com
+            matthew@tenerifemortgage.com
           </a>
         </div>
 
