@@ -13,11 +13,12 @@ const TEAM = [
     tag: "Client Assessment & Mortgage Strategy",
     photo: matImage,
     quote:
-      "I sit down with every client before a single form is filled. My job is to understand where you are, where you want to be, and what the lenders will need to see. I have spent years building relationships with Spanish banks and I use that knowledge to position your application as strongly as possible from the very first conversation.",
+      "Buying a property abroad can feel overwhelming, especially when you're unfamiliar with the local banking system, tax regulations, and legal process. If I were investing €100,000, €200,000 or €1 million, For me would want to sit down with someone I could trust before making any decisions.",
     credentials: [
       "Initial telephone consultation to assess your goals and circumstances",
       "Face-to-face meetings at our Adeje, Tenerife office",
       "Specialist in tax-efficient and cost-effective purchase structures",
+      "My priority is not simply arranging your mortgage;it is helping you save money, avoid costly mistakes, and guiding you through every stage of your property purchase in the Canary Islands with personal, face-to-face support.",
     ],
   },
   {
@@ -27,7 +28,7 @@ const TEAM = [
     tag: "Documentation, Lender Liaison & Client Care",
     photo: louImage,
     quote:
-      "I am your point of contact from the moment your application goes in until the keys are in your hand. I track every document, chase every response and make sure nothing falls through the gaps. Buying abroad means navigating systems you have never encountered before — I am here to make that feel straightforward, not stressful.",
+      "I work closely with clients and professional partners to ensure every mortgage application is handled with care, accuracy, and efficiency. From managing documentation and liaising with banks, solicitors, and lawyers to keeping clients informed, I focus on delivering a personal, responsive, and stress-free experience. I also manage our social media, sharing the latest news, insights, and property finance updates.",
     credentials: [
       "Direct liaison with banks, solicitors and legal partners",
       "End-to-end client communication and case management",
@@ -41,11 +42,16 @@ const TEAM = [
     tag: "International Payments & Currency Management",
     photo: marImage,
     quote:
-      "I manage our relationships with Spanish banks and specialist finance partners so that you are never limited to a single lender's terms. I negotiate on your behalf using real market knowledge — not just published rates. My goal is to secure the most competitive structure available for your specific situation, whether that is a standard residential mortgage, a non-resident product or a more bespoke finance arrangement.",
+      "My name is Marco, and I am the Customer Relations Manager for Magna Financial in the Canary Islands. I work closely with clients to provide personalised support, helping them manage their international payments and foreign exchange needs with confidence.",
     credentials: [
       "Save up to 5% compared with typical bank exchange rates",
-      "Multi-currency accounts in 36+ currencies, opened within minutes",
+      "Open multi-currency accounts in 36+ currencies within minutes",
+      "Fast global payments, with funds delivered within 24 hours",
+      "No commission fees",
+      "Expert market guidance to help secure competitive exchange rates",
       "Fixed-rate forward contracts in over 100 currencies",
+      "Secure client accounts to hold your funds safely",
+      "Dedicated account manager providing personalised support throughout",
     ],
   },
 ];
