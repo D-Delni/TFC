@@ -48,9 +48,8 @@ export default function ContactPage() {
               <div className="mt-8 space-y-5 text-sm">
                 <div>
                   <p className="font-semibold text-brand-blue text-base mb-1">
-                    Tenerife Mortgage Consultancy SL
+                    Tenerife Mortgage Consultancy
                   </p>
-                  <p className="text-gray-500">CIF: B70792536</p>
                 </div>
                 <div className="flex gap-3">
                   <svg

@@ -11,8 +11,7 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeroCarousel from "../components/HeroCarousel";
-import teamImage from "../assets/img/team/ART_7260.jpg";
-
+import teamImage from "../assets/img/team/ART_7274.jpg";
 export default function HomePage() {
   return (
     <>
@@ -116,13 +115,13 @@ export default function HomePage() {
                 Learn More About Us
               </Link>
             </div>
-            <div className="rounded-xl overflow-hidden shadow-lg aspect-video bg-gray-100">
+            <div className="rounded-xl overflow-hidden shadow-lg aspect-[791/507] bg-gray-100">
               <img
                 src={teamImage}
                 alt="Mortgage consultation in progress"
-                className="w-full h-full object-cover object-top"
+                className="h-full w-full object-cover object-top"
               />
-            </div>
+            </div>{" "}
           </div>
         </section>
 

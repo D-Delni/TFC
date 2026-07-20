@@ -8,12 +8,11 @@ export default function Footer() {
         <div className="md:col-span-2">
           <div className="font-display font-bold text-xl mb-2">
             TM <span className="text-brand-gold">Tenerife</span> Mortgage
-            Consultancy SL
+            Consultancy
           </div>
           <p className="text-sm text-gray-300 leading-relaxed mb-4">
             Independent mortgage consultancy for buying property in Spain.
           </p>
-          <p className="text-xs text-gray-400">CIF: B70792536</p>
           <p className="text-xs text-gray-400 mt-1">
             Avda de los Pueblos, CC San Eugenio Local 94,
             <br />
@@ -66,7 +65,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10 py-4">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-400">
-          <span>© Tenerife Mortgage Consultancy SL — CIF: B70792536</span>
+          <span>Tenerife Mortgage Consultancy</span>
           <div className="flex gap-4">
             <Link to="/privacy" className="hover:text-white">
               Privacy Policy
@@ -75,6 +74,7 @@ export default function Footer() {
               Cookie Policy
             </Link>
           </div>
+          <span>© Delni-Studio</span>
         </div>
       </div>
     </footer>

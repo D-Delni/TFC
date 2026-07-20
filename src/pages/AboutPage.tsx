@@ -13,7 +13,7 @@ const TEAM = [
     tag: "Client Assessment & Mortgage Strategy",
     photo: matImage,
     quote:
-      "Buying a property abroad can feel overwhelming, especially when you're unfamiliar with the local banking system, tax regulations, and legal process. If I were investing €100,000, €200,000 or €1 million, For me would want to sit down with someone I could trust before making any decisions.",
+      "Buying a property abroad can feel overwhelming, especially when you're unfamiliar with the local banking system, tax regulations, and legal process. If I were investing €100,000, €200,000 or €1 million, I would want to sit down with someone I could trust before making any decisions.",
     credentials: [
       "Initial telephone consultation to assess your goals and circumstances",
       "Face-to-face meetings at our Adeje, Tenerife office",
@@ -53,6 +53,8 @@ const TEAM = [
       "Secure client accounts to hold your funds safely",
       "Dedicated account manager providing personalised support throughout",
     ],
+    phone: "+34 622 19 39 17",
+    email: "marco@magnafinancial.com",
   },
 ];
 
@@ -102,11 +104,11 @@ export default function AboutPage() {
                 Independent advice. No bank affiliations. No hidden agendas.
               </h2>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Tenerife Mortgage Consultancy SL is a fully licensed,
-                independent mortgage consultancy based in Adeje, Tenerife. We
-                work exclusively for our clients — not for banks, not for
-                developers — which means every recommendation we make is shaped
-                entirely by what is right for your situation.
+                Tenerife Mortgage Consultancy is a fully licensed, independent
+                mortgage consultancy based in Adeje, Tenerife. We work
+                exclusively for our clients — not for banks, not for developers
+                — which means every recommendation we make is shaped entirely by
+                what is right for your situation.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8">
                 We specialise in helping international buyers navigate the
@@ -128,13 +130,12 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4">
               {[
-                { label: "Registered in Spain", value: "CIF: B70792536" },
                 {
                   label: "Office",
                   value: "CC San Eugenio Local 94, Adeje, Tenerife",
                 },
                 { label: "Hours", value: "Monday – Friday, 10:00 – 14:00" },
-                { label: "Languages", value: "English · Spanish · German" },
+                { label: "Languages", value: "English · Spanish" },
               ].map(({ label, value }) => (
                 <div
                   key={label}
@@ -172,7 +173,17 @@ export default function AboutPage() {
             <div className="space-y-10">
               {TEAM.map(
                 (
-                  { initials, name, role, tag, photo, quote, credentials },
+                  {
+                    initials,
+                    name,
+                    role,
+                    tag,
+                    photo,
+                    quote,
+                    credentials,
+                    phone,
+                    email,
+                  },
                   idx,
                 ) => (
                   <article
@@ -212,6 +223,30 @@ export default function AboutPage() {
                           {role}
                         </p>
 
+                        {/* Contact details — only renders when phone/email exist (Marco) */}
+                        {phone || email ? (
+                          <div className="mb-5 flex flex-col gap-y-0.5 sm:flex-row sm:items-center sm:gap-x-4">
+                            {phone && (
+                              <a
+                                href={`tel:${phone.replace(/\s+/g, "")}`}
+                                className="text-xs font-light text-brand-lightblue transition-colors hover:text-brand-gold"
+                              >
+                                {phone}
+                              </a>
+                            )}
+
+                            {email && (
+                              <a
+                                href={`mailto:${email}`}
+                                className="text-xs font-light text-brand-lightblue transition-colors hover:text-brand-gold"
+                              >
+                                {email}
+                              </a>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="mb-6" />
+                        )}
                         {/* First-person quote */}
                         <div className="relative mb-8">
                           <span className="absolute -top-3 -left-1 font-display text-5xl text-brand-gold/25 leading-none select-none">
@@ -268,10 +303,6 @@ export default function AboutPage() {
                 {
                   title: "Transparent",
                   body: "No hidden fees. No surprises. Every step is explained before you commit to anything.",
-                },
-                {
-                  title: "Multilingual",
-                  body: "We work in English, Spanish and German so nothing is lost in translation.",
                 },
                 {
                   title: "End-to-end",
